@@ -47,13 +47,14 @@ def get_line_edge(ed, G):
         The Line VMobject.
 
     """
+    e = G.edges[ed]
     n1 = G.nodes[ed[0]]
     n2 = G.nodes[ed[1]]
     x1, y1 = n1['pos']
     x2, y2 = n2['pos']
     start = x1*RIGHT + y1*UP
     end = x2*RIGHT + y2*UP
-    return Line(start, end, color=n1.get('color', WHITE))
+    return Line(start, end, color=e.get('color', None) or n1.get('color', WHITE))
 
 # %%
 
